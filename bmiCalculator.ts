@@ -11,4 +11,20 @@ const calculateBmi = (height: number, weight: number): string => {
   }
 }
 
-console.log(calculateBmi(180, 74)) 
+try {
+  const height: number = Number(process.argv[2])
+  const weight: number = Number(process.argv[3])
+  if (isNaN(height) || isNaN(weight)) {
+    throw new Error('Provided values were not numbers!')
+  }
+  console.log(calculateBmi(height, weight))
+} catch (e:unknown) {
+  if (e instanceof Error) {
+    console.log('Error:', e.message)
+  } else {
+    console.log('Unknown error')
+  }
+}
+
+
+//console.log(calculateBmi(180, 74)) 
