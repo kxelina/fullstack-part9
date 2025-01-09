@@ -1,5 +1,5 @@
 import { PatientEntry } from "../src/types";
-import toNewPatient from "../src/utils";
+import { toNewPatient } from "../src/utils";
 
 const data = [
     {

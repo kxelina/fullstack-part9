@@ -1,3 +1,6 @@
+import { z } from 'zod';
+import { newPatientSchema } from './utils';
+
 export type Diagnose = 'code' | 'name' | 'latin?';
 
 export type Patient = 'id' | 'name' | 'dateOfBirth'| 'gender' | 'occupation';
@@ -8,14 +11,11 @@ export interface DiagnoseEntry {
   latin?: string;
 }
 
-export interface PatientEntry {
+export interface PatientEntry extends NewPatientEntry {
   id: string;
-  name: string;
-  dateOfBirth: string;
-  gender: string;
-  occupation: string;
-  ssn: string;
 }
+
+export type NewPatientEntry = z.infer<typeof newPatientSchema>;
 
 export type PatientData = Omit<PatientEntry, 'ssn'>;
 
